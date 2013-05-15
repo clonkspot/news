@@ -16,8 +16,13 @@ angular.module('clonkspotNewsApp', [])
       $scope.editItem = to
     }
 
-    // Save the edited news item on the server.
-    $scope.updateNewsItem = function(item) {
-      console.log('Updating item', item)
+    // Save the edited news items on the server.
+    $scope.updateNewsItems = function() {
+      $scope.news.forEach(function(item) {
+        dpd.news.post(item, function(result, error) {
+          if (error)
+            alert('There was an error while saving: ' + error)
+        })
+      })
     }
   })
