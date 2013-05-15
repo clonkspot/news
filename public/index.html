@@ -5,6 +5,14 @@
     <meta charset='utf-8'>
     <link rel="stylesheet" href="http://clonkspot.org/css/clonkspot.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="http://clonkspot.org/css/pages.css" type="text/css" charset="utf-8">
+
+    <style>
+      .news-form label {
+        color: white;
+        display: block;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -62,12 +70,27 @@
 
 <div class="content" id=home ng-controller="NewsCtrl">
  
-  <!--LayerSlider begin-->
-  <div id="layerslider"></div>
-  <!--LayerSlider end-->
+  <div id="layerslider">
+    <form class="news-form" ng-submit="updateNewsItem(news[editItem])">
+      <label>Title</label>
+      <input type=text size=30 ng-model="news[editItem].title">
+      <label>Link</label>
+      <input type=text size=30 ng-model="news[editItem].link">
+      <label>Author</label>
+      <input type=text size=30 ng-model="news[editItem].author">
+      <label>Date</label>
+      <input type=text size=30 ng-model="news[editItem].date">
+      <label>Type</label>
+      <select ng-model="news[editItem].type">
+        <option value="youtube">YouTube</option>
+        <option value="newpost">New Post</option>
+      </select>
+      <input type=submit>
+    </form>
+  </div>
 
   <aside class=newsfeed>
-    <a href="{{ item.link }}" ng-repeat="item in news">
+    <a href="{{ item.link }}" ng-repeat="item in news" ng-mouseenter="changeEditItem($index)">
       <img src="http://clonkspot.org/images/stream_{{ item.type }}.png" alt="{{ item.type }}">
       <div>
         <b>{{ item.title }}</b>
