@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" ng-app="clonkspotNewsApp">
+  <head>
+    <title>Clonkspot</title>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="http://clonkspot.org/css/clonkspot.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="http://clonkspot.org/css/pages.css" type="text/css" charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <img src="http://clonkspot.org/images/header.jpg" alt="">
+        <div class="logo">
+          <img src="http://clonkspot.org/images/logo.png" alt="clonkspot - your hub for Clonk.">
+        </div>
+      </a>
+
+      <a class="language" href="javascript:void(0)" onclick="document.cookie='language=de';location.reload(true)">
+        Ich möchte Deutsch. <img src="http://clonkspot.org/images/flag_de.png" alt="">
+      </a>
+
+      <a class="icon twitter" href="https://twitter.com/clonkspot"><img src="http://clonkspot.org/images/twitter.png" alt="Twitter"></a>
+      <a class="icon youtube" href="http://youtube.com/user/clonkspot"><img src="http://clonkspot.org/images/youtube.png" alt="YouTube"></a>
+
+      <nav>
+        <a href="/">
+          <img src="http://clonkspot.org/images/home_hl.png" alt="Home">
+        </a>
+                <a href="/blog" class="">
+          <b>Blog</b>
+          <small>our thoughts about Clonk</small>
+        </a>
+                <a href="/cgi-bin/forum/forum.pl" class="">
+          <b>Forums</b>
+          <small>join the mumbling</small>
+        </a>
+                <a href="/comic" class="">
+          <b>Comics</b>
+          <small>simply Clonk</small>
+        </a>
+                <a href="http://clonkforge.net/" class="">
+          <b>ClonkForge</b>
+          <small>introduce your project</small>
+        </a>
+                <a href="http://clonk.de/" class="">
+          <b>Official Website</b>
+          <small>the origin of Clonk</small>
+        </a>
+                <a href="http://openclonk.org/" class="">
+          <b>OpenClonk</b>
+          <small>meet the OpenSource variant</small>
+        </a>
+              </nav>
+
+      <!-- Twitch stream notification shown via JS -->
+      <div class="twitch">
+        <a href="#">Clonk Livestream on Twitch.tv!</a>
+      </div>
+    </header>
+    
+
+
+<div class="content" id=home ng-controller="NewsCtrl">
+ 
+  <!--LayerSlider begin-->
+  <div id="layerslider"></div>
+  <!--LayerSlider end-->
+
+  <aside class=newsfeed>
+    <a href="{{ item.link }}" ng-repeat="item in news">
+      <img src="http://clonkspot.org/images/stream_{{ item.type }}.png" alt="{{ item.type }}">
+      <div>
+        <b>{{ item.title }}</b>
+        <small>posted by {{ item.author }} | {{ item.date }}</small>
+      </div>
+    </a>
+  </aside>
+  
+  <section class="download content">
+    <h2>Download Clonk</h2>
+    <p>Choose version:</p>
+    <div class=buttons>
+      <a href="http://www.clonk.de/cr.php?lng=en" class=cr>
+        <img src="http://clonkspot.org/images/cr.png" alt="CR">
+        <strong>Clonk Rage</strong>
+        <p>2009, Shareware</p>
+      </a>
+      <a href="http://openclonk.org/download/" class=oc>
+        <img src="http://clonkspot.org/images/oc.png" alt="OC">
+        <strong>OpenClonk</strong>
+        <p>in development</p>
+      </a>
+    </div>
+  </section>
+  <img class="clonk" src="http://clonkspot.org/images/knight.png" alt="">
+  <section class="screenshots">
+    <h2>Screenshots</h2>
+    <ul>
+              <li>
+          <a href="http://clonkspot.org/blog/2013/03/01/sdm9-heilung-der-welt/">
+            <img src="http://clonkspot.org/blog/wp-content/uploads/2013/03/Screenshot005-150x150.jpg" alt="SdM" style="bottom: 0px; right: 0px">
+          </a>
+        </li>
+              <li>
+          <a href="http://clonkspot.org/blog/2013/02/01/sdm8-mit-furcht-und-ohne-adel/">
+            <img src="http://clonkspot.org/blog/wp-content/uploads/2013/02/Screenshot1-150x150.jpg" alt="SdM" style="bottom: 50px; right: 20px">
+          </a>
+        </li>
+              <li>
+          <a href="http://clonkspot.org/blog/2012/12/01/sdm7-blitzkrieg/">
+            <img src="http://clonkspot.org/blog/wp-content/uploads/2012/11/LightningChaos-150x150.png" alt="SdM" style="bottom: 50px; right: 30px">
+          </a>
+        </li>
+              <li>
+          <a href="http://clonkspot.org/blog/2012/11/01/sdm6-adventure/">
+            <img src="http://clonkspot.org/blog/wp-content/uploads/2012/11/Screenshot3-150x150.jpg" alt="SdM" style="bottom: 50px; right: 10px">
+          </a>
+        </li>
+              <li>
+          <a href="http://clonkspot.org/blog/2012/10/01/sdm5-vulkangabel/">
+            <img src="http://clonkspot.org/blog/wp-content/uploads/2012/09/Weekly-7-Vulkangabel-150x150.png" alt="SdM" style="bottom: 20px; right: 0px">
+          </a>
+        </li>
+              <li>
+          <a href="http://clonkspot.org/blog/2012/09/14/sdw4-lobbyismus/">
+            <img src="http://clonkspot.org/blog/wp-content/uploads/2012/09/Screenshot2-150x150.jpg" alt="SdM" style="bottom: 0px; right: 0px">
+          </a>
+        </li>
+              <li>
+          <a href="http://clonkspot.org/blog/2012/09/09/sdw3-u-boot-verlader/">
+            <img src="http://clonkspot.org/blog/wp-content/uploads/2012/09/Weekly-15-Uboot-Verlader-150x150.png" alt="SdM" style="bottom: 40px; right: 50px">
+          </a>
+        </li>
+              <li>
+          <a href="http://clonkspot.org/blog/2012/09/01/sdw2-freiluft-akrobatik/">
+            <img src="http://clonkspot.org/blog/wp-content/uploads/2012/09/Weekly-9-Freiluft-Akrobatik-150x150.png" alt="SdM" style="bottom: 0px; right: 0px">
+          </a>
+        </li>
+              <li>
+          <a href="http://clonkspot.org/blog/2012/08/24/sdw1-kenny-und-die-flutwelle/">
+            <img src="http://clonkspot.org/blog/wp-content/uploads/2012/08/Weekly-2-Kenny-und-die-Flutwelle-150x150.png" alt="SdM" style="bottom: 0px; right: 0px">
+          </a>
+        </li>
+          </ul>
+  </section>
+</div>
+    <footer>
+      <a href="/impressum">Impressum</a>
+    </footer>
+
+    <script src="/dpd.js"></script>
+    <script src="/js/angular.js"></script>
+    <script src="/js/news.js"></script>
+  </body>
+</html>
+

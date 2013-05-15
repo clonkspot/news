@@ -1,0 +1,45 @@
+{
+	"type": "Collection",
+	"properties": {
+		"title": {
+			"name": "title",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "title",
+			"order": 0
+		},
+		"link": {
+			"name": "link",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "link",
+			"order": 1
+		},
+		"type": {
+			"name": "type",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "type",
+			"order": 2
+		},
+		"author": {
+			"name": "author",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "author",
+			"order": 3
+		},
+		"date": {
+			"name": "date",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "date",
+			"order": 4
+		}
+	}
+}
