@@ -26,6 +26,18 @@ angular.module('clonkspotNewsApp', [])
       })
     }
 
+    // Logout
+    $scope.logout = function() {
+      dpd.users.logout(function(result, error) {
+        if (error)
+          alert('Could not log out: ' + error)
+        else {
+          $scope.me = null
+          $scope.$apply()
+        }
+      })
+    }
+
     // The item that is being edited.
     $scope.editItem = 1
 

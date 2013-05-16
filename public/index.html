@@ -79,6 +79,7 @@
     </form>
     <div class="news-admin" ng-hide="!me">
       <button ng-click="addItem(); changeEditItem(0)">Add item...</button>
+      <button ng-click="logout()">Logout</button>
       <form class="news-form" ng-submit="updateNewsItems()">
         <label>Title</label>
         <input type=text size=30 ng-model="news[editItem].title">
