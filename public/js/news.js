@@ -8,6 +8,24 @@ angular.module('clonkspotNewsApp', [])
       $scope.$apply()
     })
 
+    // Check for authentication.
+    dpd.users.me(function(result, error) {
+      $scope.me = result
+      $scope.$apply()
+    })
+
+    $scope.login = {}
+
+    // Login
+    $scope.authenticate = function(credentials) {
+      dpd.users.login(credentials, function(result, error) {
+        $scope.me = result
+        $scope.$apply()
+        if (error)
+          alert('Could not log in: ' + error)
+      })
+    }
+
     // The item that is being edited.
     $scope.editItem = 1
 
