@@ -82,15 +82,15 @@
       <button ng-click="logout()">Logout</button>
       <form class="news-form" ng-submit="updateNewsItems()">
         <label>Title</label>
-        <input type=text size=30 ng-model="news[editItem].title">
+        <input required type=text size=30 ng-model="news[editItem].title">
         <label>Link</label>
-        <input type=text size=30 ng-model="news[editItem].link">
+        <input required type=text size=30 ng-model="news[editItem].link">
         <label>Author</label>
-        <input type=text size=30 ng-model="news[editItem].author">
+        <input required type=text size=30 ng-model="news[editItem].author">
         <label>Date</label>
-        <input type=date size=30 ng-model="news[editItem].date">
+        <input required type=date size=30 ng-model="news[editItem].date">
         <label>Type</label>
-        <select ng-model="news[editItem].type">
+        <select required ng-model="news[editItem].type">
           <option value="youtube">YouTube</option>
           <option value="newpost">New Post</option>
         </select>
