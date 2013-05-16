@@ -14,6 +14,9 @@ angular.module('clonkspotNewsApp', [])
       $scope.$apply()
     })
 
+    // Whether the admin view or the slider is shown.
+    $scope.adminView = false
+
     $scope.login = {}
 
     // Login
@@ -65,6 +68,23 @@ angular.module('clonkspotNewsApp', [])
           else
             $scope.news[index] = result
         })
+      })
+    }
+  })
+
+  // Toggles a variable when pressing a certain key combination.
+  .directive('keyToggle', function() {
+    return function(scope, element, attrs) {
+      var keys = attrs.keys.split('+'),
+          toggle = attrs.keyToggle
+      angular.element(document).bind('keydown', function(event) {
+        for (var i = 0; i < keys.length; i++) {
+          if (keys[i].charCodeAt() != event.which && !event[keys[i].toLowerCase()+'Key']) {
+            return;
+          }
+        }
+        scope[toggle] = !scope[toggle]
+        scope.$apply()
       })
     }
   })

@@ -71,31 +71,35 @@
 <div class="content" id=home ng-controller="NewsCtrl">
  
   <div id="layerslider">
-    <form class="news-login" ng-hide="me" ng-submit="authenticate(login)">
-      <label>Login</label>
-      <input type="text" placeholder="Username" ng-model="login.username">
-      <input type="password" placeholder="Password" ng-model="login.password">
-      <input type="submit">
-    </form>
-    <div class="news-admin" ng-hide="!me">
-      <button ng-click="addItem(); changeEditItem(0)">Add item...</button>
-      <button ng-click="logout()">Logout</button>
-      <form class="news-form" ng-submit="updateNewsItems()">
-        <label>Title</label>
-        <input required type=text size=30 ng-model="news[editItem].title">
-        <label>Link</label>
-        <input required type=text size=30 ng-model="news[editItem].link">
-        <label>Author</label>
-        <input required type=text size=30 ng-model="news[editItem].author">
-        <label>Date</label>
-        <input required type=date size=30 ng-model="news[editItem].date">
-        <label>Type</label>
-        <select required ng-model="news[editItem].type">
-          <option value="youtube">YouTube</option>
-          <option value="newpost">New Post</option>
-        </select>
-        <input type=submit>
+    <b ng-hide="adminView">Slider</b>
+
+    <div class="news-admin" ng-hide="!adminView" key-toggle="adminView" keys="Ctrl+Shift+A">
+      <form class="news-login" ng-hide="me" ng-submit="authenticate(login)">
+        <label>Login</label>
+        <input type="text" placeholder="Username" ng-model="login.username">
+        <input type="password" placeholder="Password" ng-model="login.password">
+        <input type="submit">
       </form>
+      <div ng-hide="!me">
+        <button ng-click="addItem(); changeEditItem(0)">Add item...</button>
+        <button ng-click="logout()">Logout</button>
+        <form class="news-form" ng-submit="updateNewsItems()">
+          <label>Title</label>
+          <input required type=text size=30 ng-model="news[editItem].title">
+          <label>Link</label>
+          <input required type=text size=30 ng-model="news[editItem].link">
+          <label>Author</label>
+          <input required type=text size=30 ng-model="news[editItem].author">
+          <label>Date</label>
+          <input required type=date size=30 ng-model="news[editItem].date">
+          <label>Type</label>
+          <select required ng-model="news[editItem].type">
+            <option value="youtube">YouTube</option>
+            <option value="newpost">New Post</option>
+          </select>
+          <input type=submit>
+        </form>
+      </div>
     </div>
   </div>
 
