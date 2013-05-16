@@ -37,7 +37,10 @@ angular.module('clonkspotNewsApp', [])
     // Adds another news item on top.
     $scope.addItem = function() {
       var n = $scope.news.slice(0, 3)
-      n.unshift({})
+      n.unshift({
+        author: $scope.me.username,
+        date: new Date().toISOString()
+      })
       $scope.news = n
     }
 
