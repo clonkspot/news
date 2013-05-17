@@ -54,7 +54,7 @@ angular.module('clonkspotNewsApp', [])
       var n = $scope.news.slice(0, 3)
       n.unshift({
         author: $scope.me.username,
-        date: new Date().toISOString()
+        date: new Date().toISOString().slice(0, 10)
       })
       $scope.news = n
     }
