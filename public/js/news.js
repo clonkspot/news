@@ -2,8 +2,10 @@
 
 angular.module('clonkspotNewsApp', [])
   .controller('NewsCtrl', function($scope) {
+    var lang = document.documentElement.lang
+
     // Load the news from the server.
-    dpd.news.get({$limit: 4, $sort: {date: -1}}, function(news, error) {
+    dpd.news.get({lang: lang, $limit: 4, $sort: {date: -1}}, function(news, error) {
       $scope.news = news
       $scope.$apply()
     })
@@ -54,7 +56,8 @@ angular.module('clonkspotNewsApp', [])
       var n = $scope.news.slice(0, 3)
       n.unshift({
         author: $scope.me.username,
-        date: new Date().toISOString().slice(0, 10)
+        date: new Date().toISOString().slice(0, 10),
+        lang: lang
       })
       $scope.news = n
     }

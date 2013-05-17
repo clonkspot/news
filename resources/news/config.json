@@ -40,6 +40,14 @@
 			"required": true,
 			"id": "date",
 			"order": 4
+		},
+		"lang": {
+			"name": "lang",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "lang",
+			"order": 5
 		}
 	}
 }
