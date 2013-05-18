@@ -1,17 +1,18 @@
 /* Angular News Application */
 
 angular.module('clonkspotNewsApp', [])
-  .controller('NewsCtrl', function($scope) {
+  .controller('NewsCtrl', function($scope, $http) {
     var lang = document.documentElement.lang
 
     // Load the news from the server.
-    dpd.news.get({lang: lang, $limit: 4, $sort: {date: -1}}, function(news, error) {
-      $scope.news = news
-      $scope.$apply()
-    })
+    $http.get('/news?' + JSON.stringify({lang: lang, $limit: 4, $sort: {date: -1}}))
+      .success(function(news) {
+        $scope.news = news
+        $scope.$apply()
+      })
 
     // Check for authentication.
-    dpd.users.me(function(result, error) {
+    $http.get('/users/me').success(function(result) {
       $scope.me = result
       $scope.$apply()
     })
@@ -23,23 +24,25 @@ angular.module('clonkspotNewsApp', [])
 
     // Login
     $scope.authenticate = function(credentials) {
-      dpd.users.login(credentials, function(result, error) {
-        $scope.me = result
-        $scope.$apply()
-        if (error)
-          alert('Could not log in: ' + error)
-      })
+      $http.post('/users/login', credentials)
+        .success(function(result) {
+          $scope.me = result
+          $scope.$apply()
+        })
+        .error(function(error) {
+          alert('Could not log in: ' + error.message)
+        })
     }
 
     // Logout
     $scope.logout = function() {
-      dpd.users.logout(function(result, error) {
-        if (error)
-          alert('Could not log out: ' + error)
-        else {
-          $scope.me = null
-          $scope.$apply()
-        }
+      $http.post('/users/logout')
+      .success(function() {
+        $scope.me = null
+        $scope.$apply()
+      })
+      .error(function(error) {
+        alert('Could not log out: ' + error.message)
       })
     }
 
@@ -65,12 +68,13 @@ angular.module('clonkspotNewsApp', [])
     // Save the edited news items on the server.
     $scope.updateNewsItems = function() {
       $scope.news.forEach(function(item, index) {
-        dpd.news.post(item, function(result, error) {
-          if (error)
-            alert('There was an error while saving: ' + error)
-          else
+        $http.post('/news', item)
+          .success(function(result) {
             $scope.news[index] = result
-        })
+          })
+          .error(function(error) {
+            alert('There was an error while saving: ' + error.message)
+          })
       })
     }
   })
