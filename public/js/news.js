@@ -3,15 +3,16 @@
 angular.module('clonkspotNewsApp', [])
   .controller('NewsCtrl', function($scope, $http) {
     var lang = document.documentElement.lang
+    var dpd = ''
 
     // Load the news from the server.
-    $http.get('/news?' + JSON.stringify({lang: lang, $limit: 4, $sort: {date: -1}}))
+    $http.get(dpd+'/news?' + JSON.stringify({lang: lang, $limit: 4, $sort: {date: -1}}))
       .success(function(news) {
         $scope.news = news
       })
 
     // Check for authentication.
-    $http.get('/users/me').success(function(result) {
+    $http.get(dpd+'/users/me').success(function(result) {
       $scope.me = result
     })
 
@@ -22,7 +23,7 @@ angular.module('clonkspotNewsApp', [])
 
     // Login
     $scope.authenticate = function(credentials) {
-      $http.post('/users/login', credentials)
+      $http.post(dpd+'/users/login', credentials)
         .success(function(result) {
           $scope.me = result
         })
@@ -33,7 +34,7 @@ angular.module('clonkspotNewsApp', [])
 
     // Logout
     $scope.logout = function() {
-      $http.post('/users/logout')
+      $http.post(dpd+'/users/logout')
       .success(function() {
         $scope.me = null
       })
@@ -64,7 +65,7 @@ angular.module('clonkspotNewsApp', [])
     // Save the edited news items on the server.
     $scope.updateNewsItems = function() {
       $scope.news.forEach(function(item, index) {
-        $http.post('/news', item)
+        $http.post(dpd+'/news', item)
           .success(function(result) {
             $scope.news[index] = result
           })
