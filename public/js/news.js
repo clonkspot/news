@@ -8,13 +8,11 @@ angular.module('clonkspotNewsApp', [])
     $http.get('/news?' + JSON.stringify({lang: lang, $limit: 4, $sort: {date: -1}}))
       .success(function(news) {
         $scope.news = news
-        $scope.$apply()
       })
 
     // Check for authentication.
     $http.get('/users/me').success(function(result) {
       $scope.me = result
-      $scope.$apply()
     })
 
     // Whether the admin view or the slider is shown.
@@ -27,7 +25,6 @@ angular.module('clonkspotNewsApp', [])
       $http.post('/users/login', credentials)
         .success(function(result) {
           $scope.me = result
-          $scope.$apply()
         })
         .error(function(error) {
           alert('Could not log in: ' + error.message)
@@ -39,7 +36,6 @@ angular.module('clonkspotNewsApp', [])
       $http.post('/users/logout')
       .success(function() {
         $scope.me = null
-        $scope.$apply()
       })
       .error(function(error) {
         alert('Could not log out: ' + error.message)
